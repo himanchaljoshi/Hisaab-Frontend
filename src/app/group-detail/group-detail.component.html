@@ -1,0 +1,49 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+  <img class="logo" src=".\assets\images\HISABlogo.png" alt="Hisaab" height="30">
+  <ul class="nav-list">
+    <li class="nav-item"><a mat-button routerLink="/dashboard">Home</a></li>
+    <li class="nav-item"><a mat-button routerLink="/groups">Groups</a></li>
+    <li class="nav-item"><a mat-button routerLink="/personal-expenses">Personal Expenses</a></li>
+    <li class="nav-item"><a mat-button routerLink="/notifications">Notifications</a></li>
+    <li class="nav-item"><a mat-button routerLink="/settings">Settings</a></li>
+  </ul>
+</div>
+
+
+
+
+
+<!-- Add this line to your template for including the CSS file -->
+<link rel="stylesheet" href="group-detail.component.css">
+
+<div class="container1">
+  <div class="header">
+    <h2>{{ group?.groupName }}</h2>
+    <div class="header-buttons">
+      <button class="btn btn-edit" (click)="editGroup()">Edit</button>
+      <input [(ngModel)]="newGroupName" type="text" placeholder="New Group Name">
+      <button class="btn btn-delete" (click)="deleteGroup()">Delete</button>
+    </div>
+  </div>
+
+  <div class="members-section">
+    <h3>Group Members:</h3>
+    <ul class="member-list">
+      <li *ngFor="let member of members">
+        {{ member.name }} ({{ member.username }})
+        <button class="btn btn-remove" (click)="deleteMember(member)">Remove</button>
+      </li>
+    </ul>
+    <button class="btn btn-add" (click)="addMembers()">Add Member</button>
+  </div>
+
+  <div class="expenses-section">
+    <h3>Expenses</h3>
+    <ul class="expense-list">
+      <li *ngFor="let expense of expenses">{{ expense.description }} - {{ expense.amount }}</li>
+    </ul>
+    <button class="btn btn-add" (click)="addExpense()">Add Expense</button>
+    <button class="btn btn-show" (click)="showTotalExpenses()">Total Expenses</button>
+  </div>
+</div>

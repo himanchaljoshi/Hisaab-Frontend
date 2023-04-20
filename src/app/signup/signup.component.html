@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Sign-Up Form</h2>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name">
+      <div *ngIf="signupForm.controls.name.touched && signupForm.controls.name.errors">
+        <div *ngIf="signupForm.controls.name.touched && signupForm.controls.name.errors['required']">Name is required.</div>
+      </div>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email">
+      <div *ngIf="signupForm.controls.email.touched && signupForm.controls.email.errors">
+        <div *ngIf="signupForm.controls.email.touched && signupForm.controls.email.errors['required']">Email is required.</div>
+        <div *ngIf="signupForm.controls.email.touched && signupForm.controls.email.errors['required']">Please enter a valid email address.</div>
+      </div>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password">
+      <div *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors">
+        <div *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors['required']">Password is required.</div>
+        <div *ngIf="signupForm.controls.password.errors['minlength']">Password must be at least 8 characters long.</div>
+      </div>
+    </div>
+    <div>
+      <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+      <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+    </div>
+  </form>
+</div>

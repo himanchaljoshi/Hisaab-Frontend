@@ -1,0 +1,28 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+  <img class="logo" src=".\assets\images\HISABlogo.png" alt="Hisaab" height="30">
+  <ul class="nav-list">
+    <li class="nav-item"><a mat-button routerLink="/dashboard">Home</a></li>
+    <li class="nav-item"><a mat-button routerLink="/groups">Groups</a></li>
+    <li class="nav-item"><a mat-button routerLink="/personal-expenses">Personal Expenses</a></li>
+    <li class="nav-item"><a mat-button routerLink="/notifications">Notifications</a></li>
+    <li class="nav-item"><a mat-button routerLink="/settings">Settings</a></li>
+  </ul>
+</div>
+
+
+
+
+
+  <h2>Groups</h2>
+  <div *ngFor="let group of groups" class="group-box" (click)="onGroupClick(group)" >
+    {{ group.groupName }}
+  </div>
+    
+<form (submit)="addGroup()">
+  <label for="name">New Group:</label>
+  <input id="name" name="name" required [(ngModel)]="name">
+  <button type="submit">Add Group</button>
+</form>
+
+

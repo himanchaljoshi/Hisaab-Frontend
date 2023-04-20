@@ -1,0 +1,16 @@
+<!-- Add this line to your template for including the CSS file -->
+<link rel="stylesheet" href="dashboard.component.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h1>Welcome {{currentUser.name}}</h1>
+<div class="container">
+  <img class="logo" src=".\assets\images\HISABlogo.png" alt="Hisaab" height="30">
+  <ul class="nav-list">
+    <li class="nav-item"><a mat-button routerLink="/dashboard">Home</a></li>
+    <li class="nav-item"><a mat-button routerLink="/groups">Groups</a></li>
+    <li class="nav-item"><a mat-button routerLink="/personal-expenses">Personal Expenses</a></li>
+    <li class="nav-item"><a mat-button routerLink="/notifications">Notifications</a></li>
+    <li class="nav-item"><a mat-button routerLink="/settings">Settings</a></li>
+  </ul>
+</div>
+

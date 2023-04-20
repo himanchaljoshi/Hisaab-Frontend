@@ -1,0 +1,111 @@
+/* Navigation Bar */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: #2D4059;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  height: 50px;
+}
+
+.container img {
+  height: 100%;
+  width: auto;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin-left: 1rem;
+}
+
+.nav-item a {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration-line: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav-item a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #F44336;
+}
+
+/* Group Detail */
+.container1 {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f4f4f4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.members-section,
+.expenses-section {
+  margin-top: 2rem;
+}
+
+.member-list,
+.expense-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.member-list li,
+.expense-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #F44336;
+  color: #fff;
+  border-color: #F44336;
+}
+
+.btn-add,
+.btn-show {
+  margin-top: 1rem;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

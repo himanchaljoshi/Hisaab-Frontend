@@ -1,0 +1,22 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+  <img class="logo" src=".\assets\images\HISABlogo.png" alt="Hisaab" height="30">
+  <ul class="nav-list">
+    <li class="nav-item"><a mat-button routerLink="/dashboard">Home</a></li>
+    <li class="nav-item"><a mat-button routerLink="/groups">Groups</a></li>
+    <li class="nav-item"><a mat-button routerLink="/personal-expenses">Personal Expenses</a></li>
+    <li class="nav-item"><a mat-button routerLink="/notifications">Notifications</a></li>
+    <li class="nav-item"><a mat-button routerLink="/settings">Settings</a></li>
+  </ul>
+</div>
+
+
+
+<div class="notifications">
+    <h2>Notifications</h2>
+    <ul>
+      <li *ngFor="let notification of notifications$ | async">{{ notification }}</li>
+    </ul>
+    <button (click)="clearNotifications()">Clear Notifications</button>
+  </div>
+  
