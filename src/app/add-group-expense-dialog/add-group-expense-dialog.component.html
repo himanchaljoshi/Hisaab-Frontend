@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Add Group Expense</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="description">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Amount</mat-label>
+    <input matInput type="number" [(ngModel)]="amount">
+  </mat-form-field>
+  <h3>Paid by:</h3>
+  <mat-radio-group [(ngModel)]="paidBy">
+    <mat-radio-button *ngFor="let member of members" [value]="member.id">{{member.name}}</mat-radio-button>
+  </mat-radio-group>
+  <h3>Split between:</h3>
+  <mat-selection-list [(ngModel)]="selectedMembers">
+    <mat-list-option *ngFor="let member of members" [value]="member.id">
+      {{member.name}}
+    </mat-list-option>
+  </mat-selection-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onAddExpense()">Add Expense</button>
+</div>

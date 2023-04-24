@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MembersService } from '../members.service';
+import { Expense, ExpenseService } from '../expense.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +9,12 @@ import { MembersService } from '../members.service';
 })
 export class DashboardComponent implements OnInit {
   currentUser: any;
+  recentExpenses: Expense[] = [];
 
-  constructor(private memberService: MembersService) { }
+  constructor(
+    private memberService: MembersService,
+    private expenseService: ExpenseService,
+  ) { }
 
   ngOnInit() {
     // Retrieve user data from local storage
@@ -23,6 +28,10 @@ export class DashboardComponent implements OnInit {
   
     // Fetch user-specific data like groups and notifications
     // You can call your memberService methods here to get the required data
+
+    // Fetch recent personal expenses
+    this.expenseService.getRecentExpenses().subscribe((expenses: Expense[]) => {
+      this.recentExpenses = expenses;
+    });
   }
 }
-

@@ -23,8 +23,13 @@ export class ExpenseService {
   getExpensesByCategory(categoryId: number): Observable<Expense[]> {
     return this.http.get<Expense[]>(`${this.apiUrl}/${categoryId}/expenses`);
   }
- 
+
+  getRecentExpenses(): Observable<Expense[]> {
+    return this.http.get<Expense[]>(`${this.apiUrl}/personal/recent`);
+  }
 }
+ 
+
 
 export interface Expense {
   id?: number;

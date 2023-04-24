@@ -109,3 +109,16 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+.owed-statements {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.owed-statement {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

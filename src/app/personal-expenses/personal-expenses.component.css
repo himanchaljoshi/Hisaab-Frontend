@@ -20,7 +20,6 @@ body {
   width: auto;
 }
 
-/* Add the following CSS to vertically align the navigation list items */
 .nav-list {
   display: flex;
   align-items: center;
@@ -48,40 +47,188 @@ body {
   color: #F44336;
 }
 
+.category-list {
+  width: 100%;
+  margin-top: 20px;
+}
 
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
 
+.category-box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 1rem;
+  text-align: center;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
 
+.category-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
+.category-box:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
 
+.category-box.selected {
+  background-color: #F44336;
+  color: #fff;
+}
 
+.category-box.selected:hover {
+  background-color: #E53935;
+}
 
+.selected-category {
+  margin-top: 40px;
+}
 
-  .category-list {
-    width: 100%;
-  }
-  
-  .category-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .category-box {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 10px;
-    text-align: center;
-    width: calc(33.333% - 10px);
-    color: #333; 
-  }
-  
-  .category-box:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .selected-category {
-    margin-top: 20px;
-  }
-  
+.selected-category h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.selected-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selected-category li {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.selected-category li .description {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.selected-category li .amount {
+  font-weight: bold;
+}
+
+.selected-category li:hover {
+  background-color: #F5F5F5;
+}
+
+/* New styles for buttons */
+button {
+  background-color: #2D4059;
+  color: #fff;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #F44336;
+  color: #fff;
+}
+
+button:active {
+  background-color: #E53935;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* New styles for input fields */
+input {
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out;
+}
+
+input:focus {
+  border-color: #2D4059;
+  outline: none;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+/* Updated spacing for category-list */
+.category-list {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* Updated spacing for input fields */
+input {
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out;
+  margin-bottom: 15px; /* Added margin */
+}
+
+input:focus {
+  border-color: #2D4059;
+  outline: none;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+/* Updated spacing for buttons */
+button {
+  background-color: #2D4059;
+  color: #fff;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  margin-right: 10px; /* Added margin */
+  margin-bottom: 15px; /* Added margin */
+}
+
+button:hover {
+  background-color: #F44336;
+  color: #fff;
+}
+
+button:active {
+  background-color: #E53935;
+}
+
+button:focus {
+  outline: none;
+}

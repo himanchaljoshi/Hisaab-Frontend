@@ -36,7 +36,7 @@ export class GroupsComponent implements OnInit {
         this.groupsService.addGroup(newGroup).subscribe((group: Group) => {
           this.groups.push(group);
           this.name = '';
-          this.notificationsService.addNotification('New group created.');
+          this.notificationsService.addNotification(`New group created with the name ${group.groupName}`);
         });
       } else {
         alert('Please enter a group name.');
@@ -47,19 +47,6 @@ export class GroupsComponent implements OnInit {
     this.router.navigate(['/groups', group.groupId]);
   }
 
-  addMember(): void {
-    // perform action to add member to group
-    this.notificationsService.addNotification('New member added to group.');
-  }
-
-  deleteMember(): void{
-    this.notificationsService.addNotification('New member added to group.');
-  }
-
-  addExpense(): void {
-    // perform action to add expense to group
-    this.notificationsService.addNotification('New expense added to group.');
-  }
 }
 
 

@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -31,6 +31,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { SettingsComponent } from './settings/settings.component';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { AddExpenseDialogComponent } from './add-expense-dialog/add-expense-dialog.component';
+import { AddGroupExpenseDialogComponent } from './add-group-expense-dialog/add-group-expense-dialog.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 
@@ -54,6 +56,7 @@ const appRoutes: Routes = [
     SettingsComponent,
     GroupDetailComponent,
     AddExpenseDialogComponent,
+    AddGroupExpenseDialogComponent,
     
     
     
@@ -75,7 +78,8 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatSelectModule,
     MatOptionModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatRadioModule
 
     
 

@@ -3,6 +3,8 @@ import { Category, CategoryService } from '../category.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddExpenseDialogComponent, ExpenseDialogData } from '../add-expense-dialog/add-expense-dialog.component';
 import { ExpenseService, Expense } from '../expense.service';
+import { NotificationsService } from '../notifications.service';
+
 
 
 @Component({
@@ -19,7 +21,8 @@ export class PersonalExpensesComponent implements OnInit {
   constructor(
     private categoryService: CategoryService, 
     public dialog: MatDialog,
-    private expenseService: ExpenseService) {}
+    private expenseService: ExpenseService,
+    private notificationService: NotificationsService) {}
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe((categories: Category[]) => {
@@ -41,6 +44,7 @@ export class PersonalExpensesComponent implements OnInit {
       this.categoryService.addCategory(newCategory).subscribe((category: Category) => {
         this.categories.push(category);
         this.newCategoryName = '';
+        this.notificationService.addNotification(`You added a new category: ${category.categoryName}`); 
       });
     }else {
       alert('Please enter a category name');

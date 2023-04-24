@@ -15,8 +15,8 @@ export class NotificationsComponent implements OnInit {
   ngOnInit() {
     this.notifications$ = this.notificationsService.getNotifications();
   }
-
-  clearNotifications(): void {
-    this.notificationsService.clearNotifications();
+  
+  deleteNotification(index: number): void {
+    this.notificationsService.deleteNotification(index);
   }
 }

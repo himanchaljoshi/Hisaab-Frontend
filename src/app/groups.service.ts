@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { GroupexpenseService } from './groupexpense.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +32,51 @@ export class GroupsService {
     return this.http.delete(`${this.groupsUrl}/${groupId}`);
   }
 
-  getGroupExpensesByGroupId(groupId: number): Observable<Expense[]> {
-    return this.http.get<Expense[]>(`${this.groupsUrl}/${groupId}/expenses`);
+  getGroupExpensesByGroupId(groupId: number): Observable<GroupExpense[]> {
+    return this.http.get<GroupExpense[]>(`${this.groupsUrl}/${groupId}/expenses`);
   }
 
-  addExpenseToGroup(groupId: number, expense: Expense): Observable<Expense> {
-    return this.http.post<Expense>(`${this.groupsUrl}/${groupId}/expenses`, expense);
+  
+  addGroupExpense(groupId: number, groupExpense: GroupExpense, paidBy: string, participants: string[]): Observable<GroupExpense> {
+    return this.http.post<GroupExpense>('http://localhost:8080/api/group-expenses', groupExpense).pipe(
+      tap((expense: GroupExpense) => {
+        const storageKey = `group-${groupId}-expenses`;
+        const existingExpensesStr = localStorage.getItem(storageKey);
+        const existingExpenses = existingExpensesStr ? JSON.parse(existingExpensesStr) : [];
+  
+        const splitAmount = expense.amount / participants.length;
+        const splitExpenses = participants.map(participant => ({
+          ...expense,
+          amount: splitAmount,
+          participant,
+          owedBy: participant !== paidBy ? paidBy : null,
+        }));
+  
+  
+        // Update the balances of the participants
+        const membersStorageKey = `group-${groupId}-members`;
+        const existingMembersStr = localStorage.getItem(membersStorageKey);
+        const existingMembers: Member[] = existingMembersStr ? JSON.parse(existingMembersStr) : [];
+  
+        participants.forEach(participant => {
+          const memberIndex = existingMembers.findIndex((m: Member) => m.username === participant);
+          if (memberIndex !== -1) {
+            if (participant === paidBy) {
+              existingMembers[memberIndex].balance = (existingMembers[memberIndex].balance || 0) + expense.amount - splitAmount;
+            } else {
+              existingMembers[memberIndex].balance = (existingMembers[memberIndex].balance || 0) - splitAmount;
+            }
+          }
+        });
+  
+        localStorage.setItem(storageKey, JSON.stringify([...existingExpenses, ...splitExpenses]));
+        localStorage.setItem(membersStorageKey, JSON.stringify(existingMembers));
+      })
+    );
   }
-
+  
+  
+  
   deleteExpenseFromGroup(groupId: number, expenseId: number): Observable<void> {
     return this.http.delete<void>(`${this.groupsUrl}/${groupId}/expenses/${expenseId}`);
   }
@@ -54,11 +92,13 @@ export class GroupsService {
       headers: { 'Content-Type': 'application/json' },
     });
   }
-  
 
   deleteMemberFromGroup(groupId: number, userId: number): Observable<void> {
     return this.http.delete<void>(`${this.groupsUrl}/${groupId}/members/${userId}`);
   }
+
+  
+
 }
 
 export interface Group {
@@ -67,13 +107,19 @@ export interface Group {
 }
 
 export interface Member {
-  id: number;
+  id: number ;
   username: string;
   name: string;
+  balance?: number; 
 }
 
-export interface Expense {
+export interface GroupExpense {
   id: number;
   description: string;
   amount: number;
+  participant?: string;
+  paidBy?: string;
+  owedBy?: string;
 }
+
+

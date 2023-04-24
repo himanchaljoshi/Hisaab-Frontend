@@ -17,4 +17,10 @@ export class SettingsComponent {
     // Navigate to the login page
     this.router.navigateByUrl('/login');
   }
+
+  changePassword() {
+    // Navigate to the change password page
+    this.router.navigateByUrl('/change-password');
+  }
+
 }

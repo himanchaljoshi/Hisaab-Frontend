@@ -14,7 +14,6 @@
 
 
 
-<!-- Add this line to your template for including the CSS file -->
 <link rel="stylesheet" href="group-detail.component.css">
 
 <div class="container1">
@@ -31,7 +30,7 @@
     <h3>Group Members:</h3>
     <ul class="member-list">
       <li *ngFor="let member of members">
-        {{ member.name }} ({{ member.username }})
+        {{ member.name }} 
         <button class="btn btn-remove" (click)="deleteMember(member)">Remove</button>
       </li>
     </ul>
@@ -39,10 +38,14 @@
   </div>
 
   <div class="expenses-section">
-    <h3>Expenses</h3>
-    <ul class="expense-list">
-      <li *ngFor="let expense of expenses">{{ expense.description }} - {{ expense.amount }}</li>
-    </ul>
+
+    <h3>Expenses owed by participants</h3>
+    <div class="owed-statements">
+      <div *ngFor="let expense of expenses" class="owed-statement">
+        {{ generateOwedStatement(expense) }}
+      </div>
+    </div>
+
     <button class="btn btn-add" (click)="addExpense()">Add Expense</button>
     <button class="btn btn-show" (click)="showTotalExpenses()">Total Expenses</button>
   </div>

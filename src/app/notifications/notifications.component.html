@@ -11,12 +11,24 @@
 </div>
 
 
-
-<div class="notifications">
-    <h2>Notifications</h2>
-    <ul>
-      <li *ngFor="let notification of notifications$ | async">{{ notification }}</li>
-    </ul>
-    <button (click)="clearNotifications()">Clear Notifications</button>
+<div *ngIf="notifications$ | async as notifications; else noNotifications">
+  <div class="notification-box" *ngFor="let notification of notifications; index as i">
+    {{notification}}
+    <button (click)="deleteNotification(i)">Delete</button>
   </div>
-  
+</div>
+<ng-template #noNotifications>
+  <p>No notifications</p>
+</ng-template>
+
+<style>
+  .notification-box {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
